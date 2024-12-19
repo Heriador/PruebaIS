@@ -1,7 +1,14 @@
-import './App.css'
+import { Container, Row } from "react-bootstrap";
+import Chat from "./components/ChatBot/ChatBot";
 
-function App() {
-  return <h1>WizyBot</h1>
+const App = () => {
+  return (
+    <Container>
+      <Row className="justify-content-md-center align-items-center">
+          <Chat />
+      </Row>
+    </Container>
+  );
 }
-
-export default App
+ 
+export default App;

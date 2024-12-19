@@ -1,0 +1,8 @@
+.chat_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg,#1b1e44,#3565b7);
+    color: white;
+    padding: 8px 12px;
+}
