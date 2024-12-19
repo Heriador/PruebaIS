@@ -1,0 +1,11 @@
+.chat-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 22px 20px;
+}
+
+.chat-footer .chat-form button {
+    background: linear-gradient(90deg,#1b1e44,#3565b7);
+    border: none;
+}
