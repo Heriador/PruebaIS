@@ -3,11 +3,14 @@ import { Button, Form, Col, InputGroup } from 'react-bootstrap'
 import './ChatBotFooter.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
-import { FormEvent, useState } from 'react'
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { ChatMessage } from '../../ChatBot'
 
-type Props = {}
+type Props = {
+    setChatHistory: Dispatch<SetStateAction<ChatMessage[]>>
+}
 
-const ChatBotFooter = (props: Props) => {
+const ChatBotFooter = ({ setChatHistory }: Props) => {
 
     const [message, setMessage] = useState('')
 
@@ -16,7 +19,11 @@ const ChatBotFooter = (props: Props) => {
 
         if(message.trim() === '') return
 
+        setChatHistory(history => [...history, {role: 'user', content: message}])
+
         setMessage('')
+
+
     }
 
     return (
