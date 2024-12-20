@@ -1,0 +1,42 @@
+.chat_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg,#1b1e44,#3565b7);
+    color: white;
+    padding: 15px 22px;
+}
+
+.chat_header .header-info{
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+        
+}
+
+.chat_header button{
+    border: none;
+    background: none;
+    color: white;
+}
+ 
+.chat_header button:hover,
+.chat_header button:active,
+.chat_header button:focus{
+    outline: none;
+    color: white;
+    background: transparent;
+    background-color: transparent;
+}
+
+
+.header-info .logo-text{
+    font-size: 1.758rem;
+    font-weight: 600;
+}
+
+@media (max-width: 520px) {
+    .chat_header{
+        padding: 12px 15px
+    }
+}
