@@ -3,8 +3,8 @@ import { Button, Form, Col, InputGroup } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
-import { Message } from '../../ChatBot'
 import './ChatBotFooter.css'
+import { Message } from '../../../../utils/types'
 
 type Props = {
     setChatHistory: Dispatch<SetStateAction<Message[]>>,
