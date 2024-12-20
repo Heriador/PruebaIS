@@ -1,5 +1,6 @@
 import OpenAI from "openai";
-import { Message } from "../components/ChatBot/ChatBot";
+import { Message } from "../utils/types";
+import { companyInfo } from "../utils/companyInfo";
 
 const openai = new OpenAI({
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
@@ -12,7 +13,7 @@ const generateChatResponse = async (chatHistory: Message[], prompt: string): Pro
         messages: [
             {
                 role: 'system',
-                content: 'You are a chatbot that helps users answer their questions.'
+                content: companyInfo
             },
             ...chatHistory,
             {
