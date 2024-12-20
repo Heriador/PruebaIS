@@ -1,18 +1,23 @@
 
 import { Button, Form, Col, InputGroup } from 'react-bootstrap'
-import './ChatBotFooter.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import { Message } from '../../ChatBot'
+import './ChatBotFooter.css'
 
 type Props = {
-    setChatHistory: Dispatch<SetStateAction<Message[]>>
+    setChatHistory: Dispatch<SetStateAction<Message[]>>,
+    generateBotResponse: (message: string) => Promise<Message>,
 }
 
-const ChatBotFooter = ({ setChatHistory }: Props) => {
+const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
 
     const [message, setMessage] = useState('')
+
+    const updateHistory = (message: string, isError = false) => {
+        setChatHistory((prev) => [...prev.filter((_, index) => index !== prev.length - 1), {role: 'assistant', content: message, isError}])
+    }
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
@@ -21,7 +26,18 @@ const ChatBotFooter = ({ setChatHistory }: Props) => {
 
         setChatHistory(history => [...history, {role: 'user', content: message}])
 
-        setTimeout(() => setChatHistory(history => [...history, {role: 'assistant', content: 'thinking...'}]), 600)
+        setChatHistory(history => [...history, {role: 'assistant', content: 'thinking...'}])
+        setTimeout(() => {
+
+            generateBotResponse(message).then((response) => {
+                updateHistory(response.content)
+            })
+            .catch((error) => {
+                updateHistory(error.message, true)
+            })
+
+        }
+        , 600)
 
         setMessage('')
 
