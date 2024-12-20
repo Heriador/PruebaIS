@@ -1,3 +1,5 @@
+
+// Contains company information that can be used in the ChatBot to provide users with information about the company.
 export const companyInfo = `
 Introduction:
 

@@ -3,10 +3,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import ChatBotIcon from '../../ChatBotIcon'
 import { Message } from '../../../../../utils/types'
 
+// Props interface to define the props of the ChatMessage component.
 type Props = {
     message: Message
 }
 
+// ChatMessage component that displays a message in the chat.
 const ChatMessage = ({ message }: Props) => {
   return (
     <div className={`message ${message.role === 'assistant' ? 'bot': message.role}-message

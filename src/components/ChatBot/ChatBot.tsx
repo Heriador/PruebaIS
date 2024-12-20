@@ -9,16 +9,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose, faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Message } from '../../utils/types'
 
+// ChatBot component that contains the header, body, and footer of the ChatBot.
+const ChatBot = () => {
 
-const Chat = () => {
-
+  // State variables to manage the chat history and the visibility of the ChatBot.
   const [chatHistory, setChatHistory] = useState<Message[]>([])
   const [showChatBot, setShowChatBot] = useState(false)
 
+  // Generates a response from the ChatBot based on the user's message.
   const generateBotResponse = async (message: string): Promise<string> => {
     return generateChatResponse(chatHistory, message)
   }
 
+  // Toggles the visibility of the ChatBot.
   const toggleChat = () => {
     setShowChatBot(!showChatBot)
   }
@@ -37,4 +40,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default ChatBot
