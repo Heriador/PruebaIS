@@ -1,7 +1,12 @@
-import './App.css'
+import { Container } from "react-bootstrap";
+import Chat from "./components/ChatBot/ChatBot";
 
-function App() {
-  return <h1>WizyBot</h1>
+const App = () => {
+  return (
+    <Container>
+          <Chat />
+    </Container>
+  );
 }
-
-export default App
+ 
+export default App;
