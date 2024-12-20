@@ -1,5 +1,5 @@
 .chat_body{
-    height: 640px;
+    height: 460px;
     padding: 25px 12px;
     overflow-y: auto;
     display: flex;
@@ -14,6 +14,10 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.chat_body .message svg{
+    align-self: flex-end;
 }
 
 .message.error .message-text{
@@ -58,4 +62,12 @@
     background: linear-gradient(90deg,#1b1e44,#3565b7);
     border-radius: 13px 13px 0px 13px;
 
+}
+
+@media (max-width: 520px) {
+    .chat_body{
+        height: calc(90% - 55px);
+        padding: 25px 15px;
+    }
+    
 }

@@ -34,3 +34,9 @@
     font-size: 1.758rem;
     font-weight: 600;
 }
+
+@media (max-width: 520px) {
+    .chat_header{
+        padding: 12px 15px
+    }
+}
