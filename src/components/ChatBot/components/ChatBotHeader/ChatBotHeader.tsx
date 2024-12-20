@@ -5,12 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Dispatch, SetStateAction } from "react"
 import "./ChatBotHeader.css"
 
+// Props interface to define the props of the ChatBotHeader component.
 type Props = {
   setShowChatBot: Dispatch<SetStateAction<boolean>>
 }
 
+// ChatBotHeader component that contains the header of the ChatBot.
 const ChatBotHeader = ({setShowChatBot}: Props) => {
 
+  // Function to close the ChatBot.
   const closeChatBot = () => {
     setShowChatBot(false)
   }
