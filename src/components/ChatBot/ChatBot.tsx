@@ -7,12 +7,7 @@ import { generateChatResponse } from '../../services/OpenAI.service'
 import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose, faMessage } from '@fortawesome/free-solid-svg-icons'
-
-export type Message = {
-  role: 'user' | 'developer' | 'assistant',
-  content: string,
-  isError?: boolean
-}
+import { Message } from '../../utils/types'
 
 
 const Chat = () => {

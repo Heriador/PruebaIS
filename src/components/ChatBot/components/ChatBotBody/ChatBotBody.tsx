@@ -1,6 +1,6 @@
+import { Message } from "../../../../utils/types"
 import ChatBotIcon from "../ChatBotIcon"
 import "./ChatBotBody.css"
-import { Message } from "../../ChatBot"
 import ChatMessage from "./components/ChatMessage"
 import { useEffect, useRef } from "react"
 
