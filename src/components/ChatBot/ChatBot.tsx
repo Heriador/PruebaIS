@@ -7,7 +7,8 @@ import { generateChatResponse } from '../../services/OpenAI.service'
 
 export type Message = {
   role: 'user' | 'developer' | 'assistant',
-  content: string
+  content: string,
+  isError?: boolean
 }
 
 

@@ -9,7 +9,8 @@ type Props = {
 
 const ChatMessage = ({ message }: Props) => {
   return (
-    <div className={`message ${message.role === 'assistant' ? 'bot': message.role}-message`}>
+    <div className={`message ${message.role === 'assistant' ? 'bot': message.role}-message
+    ${message.isError ? 'error' : ''}`}>
         {message.role === 'assistant'&& <ChatBotIcon/>}
         <p className="message-text">
             {message.content}

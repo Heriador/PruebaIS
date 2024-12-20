@@ -1,10 +1,10 @@
 
 import { Button, Form, Col, InputGroup } from 'react-bootstrap'
-import './ChatBotFooter.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import { Message } from '../../ChatBot'
+import './ChatBotFooter.css'
 
 type Props = {
     setChatHistory: Dispatch<SetStateAction<Message[]>>,
@@ -14,6 +14,10 @@ type Props = {
 const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
 
     const [message, setMessage] = useState('')
+
+    const updateHistory = (message: string, isError = false) => {
+        setChatHistory((prev) => [...prev.filter((_, index) => index !== prev.length - 1), {role: 'assistant', content: message, isError}])
+    }
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
@@ -26,7 +30,10 @@ const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
         setTimeout(() => {
 
             generateBotResponse(message).then((response) => {
-                setChatHistory(history => [...history.filter((_, index) => index !== history.length - 1), response])
+                updateHistory(response.content)
+            })
+            .catch((error) => {
+                updateHistory(error.message, true)
             })
 
         }
