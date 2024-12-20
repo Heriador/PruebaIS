@@ -14,6 +14,22 @@
         
 }
 
+.chat_header button{
+    border: none;
+    background: none;
+    color: white;
+}
+ 
+.chat_header button:hover,
+.chat_header button:active,
+.chat_header button:focus{
+    outline: none;
+    color: white;
+    background: transparent;
+    background-color: transparent;
+}
+
+
 .header-info .logo-text{
     font-size: 1.758rem;
     font-weight: 600;
