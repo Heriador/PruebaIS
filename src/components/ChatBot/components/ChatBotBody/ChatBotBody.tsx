@@ -1,36 +1,37 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ChatBotIcon from "../ChatBotIcon"
 import "./ChatBotBody.css"
-import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { Message } from "../../ChatBot"
 import ChatMessage from "./components/ChatMessage"
+import { useEffect, useRef } from "react"
 
 type Props = {
     chatHistory: Message[]
   }
 
 const ChatBotBody = ({chatHistory}: Props) => {
+
+    const chatBodyRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        chatBodyRef.current?.scrollTo({
+            top: chatBodyRef.current.scrollHeight,
+            behavior: 'smooth'
+        })
+    }, [chatHistory])
+
   return (
-    <div className="chat_body">
+    <div ref={chatBodyRef} className="chat_body">
         <div className="message bot-message">
             <ChatBotIcon />
             <p className="message-text">
                 Hi! I'm ChatBot. <br/> How can I help you today?
             </p>
         </div>
-        <div className="message user-message">
-            <p className="message-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic.
-            </p>
-            <FontAwesomeIcon icon={faUser} />
-        </div>
-
         {
             chatHistory.map((message, index) => (
                 <ChatMessage key={index} message={message}/>
             ))
         }
-
     </div>
   )
 }

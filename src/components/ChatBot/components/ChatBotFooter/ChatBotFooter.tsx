@@ -7,10 +7,11 @@ import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
 import { Message } from '../../ChatBot'
 
 type Props = {
-    setChatHistory: Dispatch<SetStateAction<Message[]>>
+    setChatHistory: Dispatch<SetStateAction<Message[]>>,
+    generateBotResponse: (message: string) => Promise<Message>,
 }
 
-const ChatBotFooter = ({ setChatHistory }: Props) => {
+const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
 
     const [message, setMessage] = useState('')
 
@@ -21,7 +22,15 @@ const ChatBotFooter = ({ setChatHistory }: Props) => {
 
         setChatHistory(history => [...history, {role: 'user', content: message}])
 
-        setTimeout(() => setChatHistory(history => [...history, {role: 'assistant', content: 'thinking...'}]), 600)
+        setChatHistory(history => [...history, {role: 'assistant', content: 'thinking...'}])
+        setTimeout(() => {
+
+            generateBotResponse(message).then((response) => {
+                setChatHistory(history => [...history.filter((_, index) => index !== history.length - 1), response])
+            })
+
+        }
+        , 600)
 
         setMessage('')
 
