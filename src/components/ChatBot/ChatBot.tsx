@@ -16,7 +16,7 @@ const Chat = () => {
 
   const [chatHistory, setChatHistory] = useState<Message[]>([])
 
-  const generateBotResponse = async (message: string): Promise<Message> => {
+  const generateBotResponse = async (message: string): Promise<string> => {
     return generateChatResponse(chatHistory, message)
   }
 
