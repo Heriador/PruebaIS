@@ -8,18 +8,18 @@ import './ChatBotFooter.css'
 
 type Props = {
     setChatHistory: Dispatch<SetStateAction<Message[]>>,
-    generateBotResponse: (message: string) => Promise<Message>,
+    generateBotResponse: (message: string) => Promise<string>,
 }
 
 const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
 
     const [message, setMessage] = useState('')
 
-    const updateHistory = (message: string, isError = false) => {
+    const updateHistory = (message: string, isError = false): void => {
         setChatHistory((prev) => [...prev.filter((_, index) => index !== prev.length - 1), {role: 'assistant', content: message, isError}])
     }
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = (e: FormEvent): void => {
         e.preventDefault()
 
         if(message.trim() === '') return
@@ -30,7 +30,7 @@ const ChatBotFooter = ({ setChatHistory, generateBotResponse}: Props) => {
         setTimeout(() => {
 
             generateBotResponse(message).then((response) => {
-                updateHistory(response.content)
+                updateHistory(response)
             })
             .catch((error) => {
                 updateHistory(error.message, true)

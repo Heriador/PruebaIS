@@ -6,7 +6,7 @@ const openai = new OpenAI({
     dangerouslyAllowBrowser: true
 })
 
-const generateChatResponse = async (chatHistory: Message[], prompt: string): Promise<Message> => {
+const generateChatResponse = async (chatHistory: Message[], prompt: string): Promise<string> => {
     const response = await openai.chat.completions.create({
         model: 'gpt-3.5-turbo',
         messages: [
@@ -24,10 +24,7 @@ const generateChatResponse = async (chatHistory: Message[], prompt: string): Pro
 
     console.log(response)
 
-    return {
-        role: 'assistant',
-        content: response.choices[0].message.content || '' 
-    };
+    return response.choices[0].message.content || 'Error generating response';
 }
 
 
