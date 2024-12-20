@@ -4,10 +4,10 @@ import './ChatBotFooter.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
-import { ChatMessage } from '../../ChatBot'
+import { Message } from '../../ChatBot'
 
 type Props = {
-    setChatHistory: Dispatch<SetStateAction<ChatMessage[]>>
+    setChatHistory: Dispatch<SetStateAction<Message[]>>
 }
 
 const ChatBotFooter = ({ setChatHistory }: Props) => {
@@ -20,6 +20,8 @@ const ChatBotFooter = ({ setChatHistory }: Props) => {
         if(message.trim() === '') return
 
         setChatHistory(history => [...history, {role: 'user', content: message}])
+
+        setTimeout(() => setChatHistory(history => [...history, {role: 'assistant', content: 'thinking...'}]), 600)
 
         setMessage('')
 

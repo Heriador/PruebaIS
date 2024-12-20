@@ -4,20 +4,20 @@ import ChatBotFooter from './components/ChatBotFooter/ChatBotFooter'
 import './ChatBot.css'
 import { useState } from 'react'
 
-export type ChatMessage = {
-  role: 'user' | 'developer',
+export type Message = {
+  role: 'user' | 'developer' | 'assistant',
   content: string
 }
 
 
 const Chat = () => {
 
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([])
+  const [chatHistory, setChatHistory] = useState<Message[]>([])
 
   return (
     <div className='chat_container'>
       <ChatBotHeader/>
-      <ChatBotBody/>
+      <ChatBotBody chatHistory={chatHistory}/>
       <ChatBotFooter setChatHistory={setChatHistory}/>
     </div>
   )

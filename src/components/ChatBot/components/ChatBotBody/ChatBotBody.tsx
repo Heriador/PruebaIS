@@ -2,9 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ChatBotIcon from "../ChatBotIcon"
 import "./ChatBotBody.css"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
+import { Message } from "../../ChatBot"
+import ChatMessage from "./components/ChatMessage"
 
+type Props = {
+    chatHistory: Message[]
+  }
 
-const ChatBotBody = () => {
+const ChatBotBody = ({chatHistory}: Props) => {
   return (
     <div className="chat_body">
         <div className="message bot-message">
@@ -19,6 +24,12 @@ const ChatBotBody = () => {
             </p>
             <FontAwesomeIcon icon={faUser} />
         </div>
+
+        {
+            chatHistory.map((message, index) => (
+                <ChatMessage key={index} message={message}/>
+            ))
+        }
 
     </div>
   )

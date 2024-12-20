@@ -6,6 +6,8 @@
     flex-direction: column;
     gap: 20px;
     margin-bottom: 82px;
+    scrollbar-width: thin;
+    scrollbar-color: #7797f0 transparent;
 }
 
 .chat_body .message{
