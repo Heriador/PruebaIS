@@ -9,3 +9,9 @@
     background: linear-gradient(90deg,#1b1e44,#3565b7);
     border: none;
 }
+
+@media (max-width: 520px) {
+    .chat-footer{
+        padding: 10px 15px 15px;
+    }
+}
