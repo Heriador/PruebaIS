@@ -1,7 +1,7 @@
-import { Message } from '../../../ChatBot'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import ChatBotIcon from '../../ChatBotIcon'
+import { Message } from '../../../../../utils/types'
 
 type Props = {
     message: Message
